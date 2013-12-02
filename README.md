@@ -19,11 +19,11 @@ Otherwise follow these steps:
 * Get the ls-adapter-interface.jar, ls-generic-adapters.jar, and log4j-1.2.15.jar files from the [latest Lightstreamer distribution](http://www.lightstreamer.com/download).
 * Get the ua-parser-1.2.2.jar file from [ua_parser Java Library](https://github.com/tobie/ua-parser/tree/master/java);
 * Get the snakeyaml-1.11.jar files from [SnakeYAML](https://code.google.com/p/snakeyaml/)
-* Build the jar LS_Room_Demo_Adapters.jar with commands like these:
+* Build the jar LS_ChatTile_Demo_Adapters.jar with commands like these:
 ```sh
- >javac -source 1.7 -target 1.7 -nowarn -g -classpath lib/log4j-1.2.15.jar;lib/ls-adapter-interface.jar;lib/ls-generic-adapters.jar;lib/ua-parser-1.2.2.jar;lib/snakeyaml-1.11.jar -sourcepath src/ -d tmp_classes src/com/lightstreamer/adapters/RoomDemo/RoomAdapter.java
+ >javac -source 1.7 -target 1.7 -nowarn -g -classpath lib/log4j-1.2.15.jar;lib/ls-adapter-interface.jar;lib/ls-generic-adapters.jar;lib/jbox2d-library-2.2.1.1.jar;lib/ua-parser-1.2.2.jar;lib/snakeyaml-1.11.jar -sourcepath src/ -d tmp_classes src/com/lightstreamer/adapters/ChatTileDemo/ChatTileAdapter.java
  
- >jar cvf LS_Room_Demo_Adapters.jar -C tmp_classes com
+ >jar cvf LS_ChatTile_Demo_Adapters.jar -C tmp_classes com
 ```
 
 # Deploy #
@@ -32,7 +32,7 @@ You have to create a specific folder to deploy the Chat-Tile Demo Adapters other
 If you choose to create you own folder, follow the next steps, otherwise skip them. 
 
 1. Create a new folder, let's call it "ChatTile", and a "lib" folder inside it.
-2. Copy the jar file of the adapter "LS_Room_Demo_Adapters.jar", compiled in the previous section, in the newly created "lib" folder.
+2. Copy the jar file of the adapter "LS_ChatTile_Demo_Adapters.jar", compiled in the previous section, in the newly created "lib" folder.
 3. Copy the files "ua-parser-1.2.2.jar" and "snakeyaml-1.11" from "Lightstreamer/lib" in the newly created "lib" folder.
 4. Create an "adapters.xml" file inside the "ChatTile" folder and use the following content (this is an example configuration, you can modify it to your liking):
 ```xml      
@@ -71,7 +71,7 @@ Please test your Adapter with the [client](https://github.com/Weswit/Lightstream
 
 ## Clients using this Adapter ##
 
-* [Lightstreamer Chat Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript)
+* [Lightstreamer Chat-Tile Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript)
 
 ## Related projects ##
 

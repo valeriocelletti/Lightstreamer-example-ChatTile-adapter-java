@@ -28,13 +28,13 @@ public class ChatTilePlayer implements Player {
 
     private boolean lastMsgChanged = false;
 
-    private boolean usrAgentChanged = false;
+    private boolean usrAgentChanged = true;
 
     // Constructor -------------------------------------------------------------
 
     public ChatTilePlayer(String name, String usrAgent) {
         this.name = name;
-        this.usrAgent = usrAgent;
+        setUsrAgent(usrAgent);
     }
 
     // Public Methods ----------------------------------------------------------
@@ -43,7 +43,7 @@ public class ChatTilePlayer implements Player {
         return usrAgent;
     }
 
-    public void  setUsrAgent(String usrAgent) {
+    final public void setUsrAgent(String usrAgent) {
         this.usrAgent = usrAgent;
         usrAgentChanged = true;
     }

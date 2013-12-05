@@ -28,7 +28,7 @@ Otherwise follow these steps:
 
 # Deploy #
 
-You have to create a specific folder to deploy the Chat-Tile Demo Adapters otherwise get the ready-made "Chat-Tile" deploy folder from `deploy.zip` of the [latest release]() of this project.<br>
+You have to create a specific folder to deploy the Chat-Tile Demo Adapters otherwise get the ready-made "Chat-Tile" deploy folder from `deploy.zip` of the [latest release](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java/releases) of this project.<br>
 If you choose to create you own folder, follow the next steps, otherwise skip them. 
 
 1. Create a new folder, let's call it `ChatTile`, and a `lib` folder inside it.

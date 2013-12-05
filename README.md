@@ -13,7 +13,7 @@ The Metadata Adapter just adds a simple support for message submission. It shoul
 
 # Build #
 
-If you want to skip the build process of this Adapter please note that in the [deploy release]() of this project you can find the "deploy.zip" file that contains a ready-made deployment resource for the Lightstreamer server. <br>
+If you want to skip the build process of this Adapter please note that in the [deploy release](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java/releases) of this project you can find the "deploy.zip" file that contains a ready-made deployment resource for the Lightstreamer server. <br>
 Otherwise follow these steps:
 
 * Get the `ls-adapter-interface.jar`, `ls-generic-adapters.jar`, and `log4j-1.2.15.jar` files from the [latest Lightstreamer distribution](http://www.lightstreamer.com/download).

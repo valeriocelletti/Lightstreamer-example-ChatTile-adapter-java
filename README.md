@@ -16,10 +16,10 @@ The Metadata Adapter just adds a simple support for message submission. It shoul
 If you want to skip the build process of this Adapter please note that in the [deploy release]() of this project you can find the "deploy.zip" file that contains a ready-made deployment resource for the Lightstreamer server. <br>
 Otherwise follow these steps:
 
-* Get the ls-adapter-interface.jar, ls-generic-adapters.jar, and log4j-1.2.15.jar files from the [latest Lightstreamer distribution](http://www.lightstreamer.com/download).
-* Get the ua-parser-1.2.2.jar file from [ua_parser Java Library](https://github.com/tobie/ua-parser/tree/master/java);
-* Get the snakeyaml-1.11.jar files from [SnakeYAML](https://code.google.com/p/snakeyaml/)
-* Build the jar LS_ChatTile_Demo_Adapters.jar with commands like these:
+* Get the `ls-adapter-interface.jar`, `ls-generic-adapters.jar`, and `log4j-1.2.15.jar` files from the [latest Lightstreamer distribution](http://www.lightstreamer.com/download).
+* Get the `ua-parser-1.2.2.jar` file from [ua_parser Java Library](https://github.com/tobie/ua-parser/tree/master/java);
+* Get the `snakeyaml-1.11.jar` files from [SnakeYAML](https://code.google.com/p/snakeyaml/)
+* Build the jar `LS_ChatTile_Demo_Adapters.jar` with commands like these:
 ```sh
  >javac -source 1.7 -target 1.7 -nowarn -g -classpath lib/log4j-1.2.15.jar;lib/ls-adapter-interface.jar;lib/ls-generic-adapters.jar;lib/jbox2d-library-2.2.1.1.jar;lib/ua-parser-1.2.2.jar;lib/snakeyaml-1.11.jar -sourcepath src/ -d tmp_classes src/com/lightstreamer/adapters/ChatTileDemo/ChatTileAdapter.java
  
@@ -28,13 +28,13 @@ Otherwise follow these steps:
 
 # Deploy #
 
-You have to create a specific folder to deploy the Chat-Tile Demo Adapters otherwise get the ready-made "Chat-Tile" deploy folder from "deploy.zip" of the [latest release]() of this project.<br>
+You have to create a specific folder to deploy the Chat-Tile Demo Adapters otherwise get the ready-made "Chat-Tile" deploy folder from `deploy.zip` of the [latest release]() of this project.<br>
 If you choose to create you own folder, follow the next steps, otherwise skip them. 
 
-1. Create a new folder, let's call it "ChatTile", and a "lib" folder inside it.
-2. Copy the jar file of the adapter "LS_ChatTile_Demo_Adapters.jar", compiled in the previous section, in the newly created "lib" folder.
-3. Copy the files "ua-parser-1.2.2.jar" and "snakeyaml-1.11" from "Lightstreamer/lib" in the newly created "lib" folder.
-4. Create an "adapters.xml" file inside the "ChatTile" folder and use the following content (this is an example configuration, you can modify it to your liking):
+1. Create a new folder, let's call it `ChatTile`, and a `lib` folder inside it.
+2. Copy the jar file of the adapter `LS_ChatTile_Demo_Adapters.jar`, compiled in the previous section, in the newly created `lib` folder.
+3. Copy the files `ua-parser-1.2.2.jar` and `snakeyaml-1.11` from `Lightstreamer/lib` in the newly created `lib` folder.
+4. Create an `adapters.xml` file inside the `ChatTile` folder and use the following content (this is an example configuration, you can modify it to your liking):
 ```xml      
 <?xml version="1.0"?>
 <adapters_conf id="CHATTILE">
@@ -57,12 +57,12 @@ If you choose to create you own folder, follow the next steps, otherwise skip th
 ```
 <br> 
 
-Now your "ChatTile" folder is ready to be deployed in the Lightstreamer server, please follow these steps:<br>
+Now your `ChatTile` folder is ready to be deployed in the Lightstreamer server, please follow these steps:<br>
 
 1. Make sure you have installed Lightstreamer Server, as explained in the GETTING_STARTED.TXT file in the installation home directory.
 2. Make sure that Lightstreamer Server is not running.
-3. Copy the "ChatTile" directory and all of its files to the "adapters" subdirectory in your Lightstreamer Server installation home directory.
-4. [Optional] Supply a specific "LS_ChatTileDemo_Logger" and "LS_demos_Logger" category in logback configuration <"Lightstreamer/conf/lightstreamer_log_conf.xml>.
+3. Copy the `ChatTile` directory and all of its files to the `adapters` subdirectory in your Lightstreamer Server installation home directory.
+4. [Optional] Supply a specific "LS_ChatTileDemo_Logger" and "LS_demos_Logger" category in logback configuration `Lightstreamer/conf/lightstreamer_log_conf.xml`.
 5. Lightstreamer Server is now ready to be launched.
 
 Please test your Adapter with the [client](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java#clients-using-this-adapter) below.

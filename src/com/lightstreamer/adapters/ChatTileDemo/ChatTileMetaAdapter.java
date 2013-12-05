@@ -20,13 +20,8 @@ package com.lightstreamer.adapters.ChatTileDemo;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
@@ -48,9 +43,6 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
     private static final String FIELD_REMOTE_IP = "REMOTE_IP";
 
     private static final String CFG_PARAM_ADAPTER_SET_ID = "adapters_conf.id";
-    private static final String CFG_PARAM_JMX_PORT = "jmxPort";
-
-    private static final String ITEM_NAME_PREFIX_BAND = "My_Band_";
 
     private static Logger logger;
 
@@ -82,15 +74,6 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
     private final ConcurrentHashMap<String, String> usrAgnts =
             new ConcurrentHashMap<String, String>();
 
-
-    private final static ScheduledExecutorService executor =
-            Executors.newSingleThreadScheduledExecutor();
-
-    private final static ConcurrentHashMap<String, PollsBandwidth> checkBandWidths =
-            new ConcurrentHashMap<String, PollsBandwidth>();
-
-    private int jmxPort = 9999;
-
     /**
      * Unique identification of the Adapter Set. It is used to uniquely
      * identify the related Data Adapter instance;
@@ -115,11 +98,6 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
         // Read the Adapter Set name, which is supplied by the Server as a parameter
         this.adapterSetId = (String) params.get(CFG_PARAM_ADAPTER_SET_ID);
         logger.info("Adapter Set: " + this.adapterSetId);
-
-        if (params.containsKey(CFG_PARAM_JMX_PORT)) {
-            this.jmxPort = new Integer((String)params.get(CFG_PARAM_JMX_PORT)).intValue();
-        }
-        logger.info("JMX Port:" + this.jmxPort);
     }
 
     @Override
@@ -157,15 +135,6 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
 
     @Override
     public void notifyNewTables(String user, String sessionID, TableInfo[] tables) throws CreditsException {
-
-        if ( tables[0].getId().startsWith(ITEM_NAME_PREFIX_BAND) ) {
-            String usr = tables[0].getId().substring(ITEM_NAME_PREFIX_BAND.length());
-            PollsBandwidth p = new PollsBandwidth(sessionID, usr, this.jmxPort);
-
-            ScheduledFuture<?> tsk = executor.scheduleAtFixedRate(p,10,2000,TimeUnit.MILLISECONDS);
-            p.setTask(tsk);
-            checkBandWidths.put(tables[0].getId(), p);
-        }
     }
 
     @Override
@@ -188,26 +157,6 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
         } else {
             logger.debug("Unknown message received: "+ message);
         }
-    }
-
-    public static void killBandChecker(String itemName) {
-        PollsBandwidth p = checkBandWidths.get(itemName);
-        if ( p != null ) {
-            p.getTask().cancel(true);
-            checkBandWidths.remove(itemName);
-        }
-    }
-
-    public static double getTotalBandwidthOut() {
-        double sum = 0.0;
-        Enumeration<PollsBandwidth> e = checkBandWidths.elements();
-        PollsBandwidth p;
-        while ( e.hasMoreElements() ) {
-            p = e.nextElement();
-            sum += p.getBandwidth();
-        }
-
-        return sum;
     }
 
     // Protected Methods -------------------------------------------------------

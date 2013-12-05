@@ -36,13 +36,11 @@ public class ChatTileAdapter implements SmartDataProvider {
     private static final String CFG_PARAM_ADAPTER_SET_ID = "adapters_conf.id";
 
     private static final String ITEM_NAME_PLAYERS_LIST = "Players_list";
-    private static final String ITEM_NAME_PREFIX_BAND = "My_Band_";
 
     private static final String FIELD_KEY = "key";
     private static final String FIELD_COMMAND = "command";
     private static final String FIELD_USR_AGNT = "usrAgnt";
     private static final String FIELD_MSG = "msg";
-    private static final String FIELD_CURRENT_BANDWIDTH = "currentBandwidth";
 
     private static final String CMD_ADD = "ADD";
     private static final String CMD_UPDATE = "UPDATE";
@@ -73,8 +71,6 @@ public class ChatTileAdapter implements SmartDataProvider {
     private static ItemEventListener listener = null;
 
     private boolean playerListSubscribed = false;
-
-    private static WorldsStatistics stats = null;
 
     /**
      * The World where the players live
@@ -112,7 +108,6 @@ public class ChatTileAdapter implements SmartDataProvider {
         // to be read by the Metadata Adapter
         feedMap.put(adapterSetId, this);
 
-        stats = new WorldsStatistics(0);
         room = new ChatTileRoom(this);
 
         logger.info("RoomAdapter start!");
@@ -140,8 +135,6 @@ public class ChatTileAdapter implements SmartDataProvider {
              playerListSubscribed = true;
              logger.debug("Subscribe request for '" + ITEM_NAME_PLAYERS_LIST + "'.");
              room.touchAllPlayers();
-        } else if (itemName.startsWith(ITEM_NAME_PREFIX_BAND)) {
-            // Nothing to do.
         } else {
             logger.debug("Received unknown subscription request: "+ itemName);
         }
@@ -159,8 +152,6 @@ public class ChatTileAdapter implements SmartDataProvider {
         if (itemName.startsWith(ITEM_NAME_PLAYERS_LIST)) {
             playerListSubscribed = false;
             logger.debug("Unsubscribe request for '" + itemName + "'.");
-        } else if (itemName.startsWith(ITEM_NAME_PREFIX_BAND)) {
-            ChatTileMetaAdapter.killBandChecker(itemName);
         }
     }
 
@@ -197,38 +188,6 @@ public class ChatTileAdapter implements SmartDataProvider {
         } catch (RoomException e) {
             logger.warn("Unexpected error handling message from user '"+name+"'.", e);
         }
-    }
-
-    public void postOverallBandwidth() {
-        double totBandwidth = ChatTileMetaAdapter.getTotalBandwidthOut();
-
-        if ( tracer != null && tracer.isDebugEnabled()) {
-            tracer.debug("Statistics - Total bandwidth for the demo: " + totBandwidth + ".");
-        }
-
-        // update statistics.
-        stats.feedBandwidth(totBandwidth);
-        return ;
-    }
-
-    public void flushStatistics() {
-        if ( tracer != null ) {
-            tracer.debug(stats);
-        }
-        stats.reset();
-    }
-
-    public static void postBandwith(String userName, Double d) {
-        if (listener == null) {
-            return;
-        }
-        if ( tracer != null && tracer.isDebugEnabled()) {
-            tracer.debug("Update current bandwidth for user " + userName + ": " + d);
-        }
-
-        final HashMap<String, String> update = new HashMap<String, String>();
-        update.put(FIELD_CURRENT_BANDWIDTH, roundToSend(d, 2));
-        listener.update(ITEM_NAME_PREFIX_BAND+ userName,update,false);
     }
 
     public void notifyPlayerUpdate(Player player) {
@@ -303,17 +262,6 @@ public class ChatTileAdapter implements SmartDataProvider {
         } catch (Exception e) {
             logger.warn("Exception in "+command+" procedure.", e);
         }
-    }
-
-    private static String roundToSend(double value, int pre) {
-        String tmp = ""+value;
-
-        int cut = tmp.length() - tmp.indexOf(".") - 1;
-        if (pre < cut  ) {
-            tmp = tmp.substring(0, tmp.length() - (cut - pre));
-        }
-
-        return tmp;
     }
 
 }

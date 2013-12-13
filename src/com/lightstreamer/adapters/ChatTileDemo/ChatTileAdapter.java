@@ -61,11 +61,6 @@ public class ChatTileAdapter implements SmartDataProvider {
     private final Logger logger;
 
     /**
-     * should be supplied by logback configuration.
-     */
-    private static Logger tracer;
-
-    /**
      * The listener of updates set by Lightstreamer Kernel.
      */
     private static ItemEventListener listener = null;
@@ -81,7 +76,6 @@ public class ChatTileAdapter implements SmartDataProvider {
 
     public ChatTileAdapter() {
         logger = Logger.getLogger(ChatTileMetaAdapter.ROOM_DEMO_LOGGER_NAME);
-        tracer = Logger.getLogger(ChatTileMetaAdapter.TRACER_LOGGER);
     }
 
     // Methods -----------------------------------------------------------------
@@ -93,13 +87,6 @@ public class ChatTileAdapter implements SmartDataProvider {
     @Override
     @SuppressWarnings("rawtypes")
     public void init(Map params, File configDir) throws DataProviderException {
-
-        try {
-            tracer.info("LS_RoomDemo_Logger start.");
-
-        } catch (Exception e) {
-            System.out.println("Loggers failed to load: " + e);
-        }
 
         // Read the Adapter Set name, which is supplied by the Server as a parameter
         String adapterSetId = (String) params.get(CFG_PARAM_ADAPTER_SET_ID);
@@ -230,10 +217,6 @@ public class ChatTileAdapter implements SmartDataProvider {
 
     private void sendUpdate(final String command, final Player player,
             final boolean isSnapshot) {
-
-        if ( tracer != null && tracer.isTraceEnabled()) {
-            tracer.trace(command +" '" + player.getName() + "'.");
-        }
 
         logger.debug("Update list " + ITEM_NAME_PLAYERS_LIST + " " + command + " " + player.getName());
 

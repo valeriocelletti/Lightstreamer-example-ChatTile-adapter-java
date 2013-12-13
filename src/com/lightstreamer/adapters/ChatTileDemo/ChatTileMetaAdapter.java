@@ -36,8 +36,8 @@ import com.lightstreamer.interfaces.metadata.TableInfo;
 
 public class ChatTileMetaAdapter extends LiteralBasedProvider {
 
-    public static final String ROOM_DEMO_LOGGER_NAME = "LS_demos_Logger.RoomDemo";
-    public static final String TRACER_LOGGER = "LS_RoomDemo_Logger.tracer";
+    public static final String ROOM_DEMO_LOGGER_NAME = "LS_demos_Logger.ChatTileDemo";
+    public static final String TRACER_LOGGER = "LS_ChatTileDemo_Logger.tracer";
 
     private static final String FIELD_USER_AGENT = "USER_AGENT";
     private static final String FIELD_REMOTE_IP = "REMOTE_IP";
@@ -91,8 +91,10 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
 
         try{
             tracer = Logger.getLogger(TRACER_LOGGER);
+            tracer.info(TRACER_LOGGER + " start.");
+
         } catch (Exception e) {
-            logger.warn("Error on tracer initialization.",  e);
+            logger.warn("Error on tracer logger initialization.",  e);
         }
 
         // Read the Adapter Set name, which is supplied by the Server as a parameter
@@ -145,8 +147,6 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
             return ;
         }
 
-        tracer.debug("Received message '"+message+"' from player '" + user + "', sessionId '"+sessionID+"'.");
-
         if (message.startsWith("n|") ) {
             String res = notifyNewPlayer(sessionID, removeTypeFrom(message));
             if (!res.equalsIgnoreCase("")) {
@@ -179,11 +179,11 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
                 throw new CreditsException(-6, "I'm not a number! I'm a free man!");
             }
 
-            String ip = getIp(sessionID);
+            String ip = getIp(sessionID, sessions);
             if (ip.isEmpty()) {
                 logger.warn("New player '" + nickname + "' message received from non-existent session '" + sessionID + "'.");
             } else {
-                tracer.debug("New player '" + nickname + "' message from ip " + ip );
+                tracer.info("New player '" + nickname + "' from ip " + ip );
             }
 
             if (nicksns.containsKey(sessionID)) {
@@ -222,19 +222,18 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
     }
 
     protected void notifyChatMessage(String sessionID, String message) throws CreditsException {
-        String player = nicksns.get(sessionID);
-        if (player == null) {
+        String playerName = nicksns.get(sessionID);
+        if (playerName == null) {
             // the message might have come too early; we cannot fulfill it
-            tracer.warn("Received message from incomplete player (ip: " + getIp(sessionID) + ").");
+            logger.warn("Received chat message from incomplete player (ip: " + getIp(sessionID, sessions) + ").");
             return;
         }
-
-        tracer.debug("Received message from player '" + player + "' (ip: " + getIp(sessionID) + ").");
+        tracer.info("Chat Message from '" + playerName + "' (ip: " + getIp(sessionID, sessions) + "), session '"+sessionID+"': " + message);
 
         try {
-            getDataAdapter().updatePlayerMsg(player, message);
+            getDataAdapter().updatePlayerMsg(playerName, message);
         } catch (ChatTileException e) {
-            logger.warn("Unexpected error handling message from user '"+player+"', session '"+sessionID+"'.", e);
+            logger.warn("Unexpected error handling message from user '"+playerName+"', session '"+sessionID+"'.", e);
         }
     }
 
@@ -312,12 +311,12 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
          return dataAdapter;
     }
 
-    private String getIp(String sessionID) {
+    private String getIp(String sessionID, Map<String,Map<String,String>> sessions) {
         String ip = "";
 
         Map<String,String> sessionInfo = sessions.get(sessionID);
         if (sessionInfo == null) {
-             logger.warn("Message received from non-existent session '" + sessionID + "'");
+            logger.warn("Unable to retrieve IP: session '" + sessionID + "' does not exist!");
         } else {
             ip =  sessionInfo.get(FIELD_REMOTE_IP);
         }

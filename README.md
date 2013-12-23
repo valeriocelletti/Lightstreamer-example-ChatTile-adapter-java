@@ -1,5 +1,7 @@
 # Lightstreamer - Chat-Tile Demo - Java Adapter #
 
+<!-- START DESCRIPTION Chat-Tile Demo -->
+
 This project includes the resources needed to develop the Metadata and Data Adapters for the [Lightstreamer - Chat-Tile Demo - JQuery Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript) that is pluggable into Lightstreamer Server. Please refer [here](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
 The <b>Chat-Tile Demo</b> implements a simple chat/collaborative application fed in real time via a Lightstreamer server.<br>
 <br>
@@ -10,6 +12,7 @@ A Java Adapter implementing both the [SmartDataProvider](http://www.lightstreame
 
 The Data Adapter accepts message submission for the unique chat room. The sender is identified by an IP address and a nickname.<br>
 The Metadata Adapter inherits from the reusable [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java) and just adds a simple support for message submission. It should not be used as a reference for a real case of client-originated message handling, as no guaranteed delivery and no clustering support is shown.
+<!-- END DESCRIPTION Chat-Tile Demo -->
 
 # Build #
 
@@ -35,6 +38,7 @@ If you choose to create you own folder, follow the next steps, otherwise skip th
 2. Copy the jar file of the adapter `LS_ChatTile_Demo_Adapters.jar`, compiled in the previous section, in the newly created `lib` folder.
 3. Copy the files `ua-parser-1.2.2.jar` and `snakeyaml-1.11` from `Lightstreamer/lib` in the newly created `lib` folder.
 4. Create an `adapters.xml` file inside the `ChatTile` folder and use the following content (this is an example configuration, you can modify it to your liking):
+
 ```xml      
 <?xml version="1.0"?>
 <adapters_conf id="CHATTILE">
@@ -70,8 +74,12 @@ Please test your Adapter with the [client](https://github.com/Weswit/Lightstream
 # See Also #
 
 ## Clients using this Adapter ##
+<!-- START RELATED_ENTRIES -->
+<!-- END RELATED_ENTRIES -->
 
 * [Lightstreamer - Chat-Tile Demo - JQuery Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript)
+
+<!-- END RELATED_ENTRIES -->
 
 ## Related projects ##
 

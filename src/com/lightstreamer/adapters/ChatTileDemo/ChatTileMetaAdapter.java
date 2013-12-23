@@ -228,7 +228,7 @@ public class ChatTileMetaAdapter extends LiteralBasedProvider {
             logger.warn("Received chat message from incomplete player (ip: " + getIp(sessionID, sessions) + ").");
             return;
         }
-        tracer.info("Chat Message from '" + playerName + "' (ip: " + getIp(sessionID, sessions) + "), session '"+sessionID+"': " + message);
+        tracer.info("ChatTile Chat Message from '" + playerName + "' (ip: " + getIp(sessionID, sessions) + "), session '"+sessionID+"': " + message);
 
         try {
             getDataAdapter().updatePlayerMsg(playerName, message);

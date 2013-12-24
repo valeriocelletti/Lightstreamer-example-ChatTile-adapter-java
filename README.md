@@ -1,6 +1,6 @@
 # Lightstreamer - Chat-Tile Demo - Java Adapter #
 
-<!-- START DESCRIPTION Chat-Tile Demo -->
+<!-- START DESCRIPTION lightstreamer-example-chattile-adapter-java -->
 
 This project includes the resources needed to develop the Metadata and Data Adapters for the [Lightstreamer - Chat-Tile Demo - JQuery Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript) that is pluggable into Lightstreamer Server. Please refer [here](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
 The <b>Chat-Tile Demo</b> implements a simple chat/collaborative application fed in real time via a Lightstreamer server.<br>
@@ -12,7 +12,7 @@ A Java Adapter implementing both the [SmartDataProvider](http://www.lightstreame
 
 The Data Adapter accepts message submission for the unique chat room. The sender is identified by an IP address and a nickname.<br>
 The Metadata Adapter inherits from the reusable [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java) and just adds a simple support for message submission. It should not be used as a reference for a real case of client-originated message handling, as no guaranteed delivery and no clustering support is shown.
-<!-- END DESCRIPTION Chat-Tile Demo -->
+<!-- END DESCRIPTION lightstreamer-example-chattile-adapter-java -->
 
 # Build #
 

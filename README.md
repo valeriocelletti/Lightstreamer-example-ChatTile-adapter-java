@@ -5,14 +5,12 @@
 The **Chat-Tile Demo** implements a simple chat/collaborative application fed in real time via a Lightstreamer server.
 
 ## Details
-This project includes the resources needed to develop the Metadata and Data Adapters for the [Lightstreamer - Chat-Tile Demo - JQuery Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript) that is pluggable into Lightstreamer Server. Please refer to [General Concepts](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
 
 As example of a client using this adapter, you may refer to the [Chat-Tile Demo - HTML (JQuery, Masonry) Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript) and view the corresponding [Live Demo](http://demos.lightstreamer.com/ChatTileDemo/).
 
-The project is comprised of source code and a deployment example.
+This project includes the implementation of the [SmartDataProvider](http://www.lightstreamer.com/docs/adapter_java_api/com/lightstreamer/interfaces/data/SmartDataProvider.html) interface and the [MetadataProviderAdapter](http://www.lightstreamer.com/docs/adapter_java_api/com/lightstreamer/interfaces/metadata/MetadataProviderAdapter.html) interface for the *Lightstreamer Chat-Tile Demo*. Please refer to [General Concepts](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
 
-### Java Data Adapter and MetaData Adapter ##
-A Java Adapter implementing both the [SmartDataProvider](http://www.lightstreamer.com/docs/adapter_java_api/com/lightstreamer/interfaces/data/SmartDataProvider.html) interface and the [MetadataProviderAdapter](http://www.lightstreamer.com/docs/adapter_java_api/com/lightstreamer/interfaces/metadata/MetadataProviderAdapter.html) interface.
+### Java Data Adapter and MetaData Adapter
 
 The Data Adapter accepts message submission for the unique chat room. The sender is identified by an IP address and a nickname.
 
@@ -41,6 +39,7 @@ To build your own version of `LS_ChatTile_Demo_Adapters.jar`, instead of using t
  
  >jar cvf LS_ChatTile_Demo_Adapters.jar -C tmp_classes com
 ```
+* Stop Lightstreamer Server; copy the just compiled LS_ChatTile_Demo_Adapters.jar in the adapters/ChatTile/lib folder of your Lightstreamer Server installation; restart Lightstreamer Server.
 
 ## See Also 
 

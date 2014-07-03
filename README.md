@@ -2,7 +2,8 @@
 
 <!-- START DESCRIPTION lightstreamer-example-chattile-adapter-java -->
 
-The *Lightstreamer - Chat-Tile Demo* implements a simple chat/collaborative application fed in real time via a Lightstreamer server.
+The *Chat-Tile Demo* implements a simple chat/collaborative application based on [Lightstreamer](http://www.lightstreamer.com) for its real-time communication needs.
+
 This project shows the Data Adapter and Metadata Adapters for the *Chat-Tile Demo* and how they can be plugged into Lightstreamer Server.
 
 As example of a client using this adapter, you may refer to the [Chat-Tile Demo - HTML (JQuery, Masonry) Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript) and view the corresponding [Live Demo](http://demos.lightstreamer.com/ChatTileDemo/).

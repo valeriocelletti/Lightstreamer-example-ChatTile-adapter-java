@@ -2,11 +2,12 @@
 
 <!-- START DESCRIPTION lightstreamer-example-chattile-adapter-java -->
 
-The **Chat-Tile Demo** implements a simple chat/collaborative application fed in real time via a Lightstreamer server.
-
-## Details
+The *Lightstreamer - Chat-Tile Demo* implements a simple chat/collaborative application fed in real time via a Lightstreamer server.
+This project shows the Data Adapter and Metadata Adapters for the *Chat-Tile Demo* and how they can be plugged into Lightstreamer Server.
 
 As example of a client using this adapter, you may refer to the [Chat-Tile Demo - HTML (JQuery, Masonry) Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript) and view the corresponding [Live Demo](http://demos.lightstreamer.com/ChatTileDemo/).
+
+## Details
 
 This project includes the implementation of the [SmartDataProvider](http://www.lightstreamer.com/docs/adapter_java_api/com/lightstreamer/interfaces/data/SmartDataProvider.html) interface and the [MetadataProviderAdapter](http://www.lightstreamer.com/docs/adapter_java_api/com/lightstreamer/interfaces/metadata/MetadataProviderAdapter.html) interface for the *Lightstreamer Chat-Tile Demo*. Please refer to [General Concepts](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/General%20Concepts.pdf) for more details about Lightstreamer Adapters.
 

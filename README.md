@@ -20,6 +20,7 @@ The Metadata Adapter inherits from the reusable [LiteralBasedProvider](https://g
 <!-- END DESCRIPTION lightstreamer-example-chattile-adapter-java -->
 
 ## Install
+If you want to install a version of this demo in your local Lightstreamer Server, follow these steps.
 * Download *Lightstreamer Server* (Lightstreamer Server comes with a free non-expiring demo license for 20 connected users) from [Lightstreamer Download page](http://www.lightstreamer.com/download.htm), and install it, as explained in the `GETTING_STARTED.TXT` file in the installation home directory.
 * Get the `deploy.zip` file of the [latest release](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java/releases), unzip it and copy the just unzipped `ChatTile` folder into the `adapters` folder of your Lightstreamer Server installation.
 * Get the `ua-parser-1.2.2.jar` file from [ua_parser Java Library](https://github.com/tobie/ua-parser/tree/master/java) and copy it into the `adapters/ChatTile/lib` folder.
@@ -29,8 +30,7 @@ The Metadata Adapter inherits from the reusable [LiteralBasedProvider](https://g
 * Test the Adapter, launching the client listed in [Clients Using This Adapter](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java#clients-using-this-adapter).
 
 ## Build
-To build your own version of `LS_ChatTile_Demo_Adapters.jar`, instead of using the one provided in the `deploy.zip` file, follow these steps.
-
+To build your own version of `LS_ChatTile_Demo_Adapters.jar`, instead of using the one provided in the `deploy.zip` file  from the [Install](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java#install) section above, follow these steps.
 * Download this project.
 * Get the `ls-adapter-interface.jar`, `ls-generic-adapters.jar`, and `log4j-1.2.15.jar` files from the [latest Lightstreamer distribution](http://www.lightstreamer.com/download), and copy them into the `lib` directory.
 * Get the `ua-parser-1.2.2.jar` file from [ua_parser Java Library](https://github.com/tobie/ua-parser/tree/master/java), and copy it into the `lib` directory.

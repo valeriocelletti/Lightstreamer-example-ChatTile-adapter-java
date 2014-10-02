@@ -6,7 +6,7 @@ The *Chat-Tile Demo* implements a simple chat/collaborative application based on
 
 This project shows the Data Adapter and Metadata Adapters for the *Chat-Tile Demo* and how they can be plugged into Lightstreamer Server.
 
-As example of a client using this adapter, you may refer to the [Chat-Tile Demo - HTML (JQuery, Masonry) Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript) and view the corresponding [Live Demo](http://demos.lightstreamer.com/ChatTileDemo/).
+As an example of a client using this adapter, you may refer to the [Chat-Tile Demo - HTML (JQuery, Masonry) Client](https://github.com/Weswit/Lightstreamer-example-ChatTile-client-javascript) and view the corresponding [Live Demo](http://demos.lightstreamer.com/ChatTileDemo/).
 
 ## Details
 
@@ -20,9 +20,9 @@ The Metadata Adapter inherits from the reusable [LiteralBasedProvider](https://g
 <!-- END DESCRIPTION lightstreamer-example-chattile-adapter-java -->
 
 ## Install
-If you want to install a version of this demo in your local Lightstreamer Server, follow these steps.
+If you want to install a version of this demo in your local Lightstreamer Server, follow these steps:
 * Download *Lightstreamer Server* (Lightstreamer Server comes with a free non-expiring demo license for 20 connected users) from [Lightstreamer Download page](http://www.lightstreamer.com/download.htm), and install it, as explained in the `GETTING_STARTED.TXT` file in the installation home directory.
-* Get the `deploy.zip` file of the [latest release](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java/releases), unzip it and copy the just unzipped `ChatTile` folder into the `adapters` folder of your Lightstreamer Server installation.
+* Get the `deploy.zip` file of the [latest release](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java/releases), unzip it, and copy the just unzipped `ChatTile` folder into the `adapters` folder of your Lightstreamer Server installation.
 * Get the `ua-parser-1.2.2.jar` file from [ua_parser Java Library](https://github.com/tobie/ua-parser/tree/master/java) and copy it into the `adapters/ChatTile/lib` folder.
 * Get the `snakeyaml-1.11.jar` files from [SnakeYAML](https://code.google.com/p/snakeyaml/) and copy it into the `adapters/ChatTile/lib` folder.
 * [Optional] Supply a specific "LS_ChatTileDemo_Logger" and "LS_demos_Logger" category in logback configuration `Lightstreamer/conf/lightstreamer_log_conf.xml`.
@@ -30,7 +30,7 @@ If you want to install a version of this demo in your local Lightstreamer Server
 * Test the Adapter, launching the client listed in [Clients Using This Adapter](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java#clients-using-this-adapter).
 
 ## Build
-To build your own version of `LS_ChatTile_Demo_Adapters.jar`, instead of using the one provided in the `deploy.zip` file  from the [Install](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java#install) section above, follow these steps.
+To build your own version of `LS_ChatTile_Demo_Adapters.jar`, instead of using the one provided in the `deploy.zip` file from the [Install](https://github.com/Weswit/Lightstreamer-example-ChatTile-adapter-java#install) section above, follow these steps:
 * Download this project.
 * Get the `ls-adapter-interface.jar`, `ls-generic-adapters.jar`, and `log4j-1.2.15.jar` files from the [latest Lightstreamer distribution](http://www.lightstreamer.com/download), and copy them into the `lib` directory.
 * Get the `ua-parser-1.2.2.jar` file from [ua_parser Java Library](https://github.com/tobie/ua-parser/tree/master/java), and copy it into the `lib` directory.
